@@ -1,14 +1,14 @@
 {
-	"name": "Skull Hotel .io",
-	"short_name": "skullhotel.io",
+	"name": "Cleaning Horrors",
+	"short_name": "Cleaning Horrors",
 	"start_url": "/",
 	"display": "standalone",
-	"background_color": "#ffffff",
-	"theme_color": "#000000",
+	"background_color": "#0A0507",
+	"theme_color": "#E0283C",
 	"icons": [
 		{
-			"src": "logo.png",
-			"sizes": "256x256",
+			"src": "images/web-app-manifest-512x512.png",
+			"sizes": "512x512",
 			"type": "image/png"
 		}
 	]

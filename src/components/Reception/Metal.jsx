@@ -1,5 +1,6 @@
 import React, { useMemo } from 'react';
 import * as THREE from 'three';
+import { Text } from '@react-three/drei';
 import { useGLTF } from '../../utils/useGLTFLocal';
 import useLight from '../../hooks/useLight';
 import useProgressiveLoad from '../../hooks/useProgressiveLoad';
@@ -72,14 +73,19 @@ export default function Metal() {
 				/>
 			)}
 			{visibleParts.text && (
-				<>
-					<mesh
-						castShadow
-						receiveShadow
-						geometry={nodes.Text.geometry}
-						material={textMaterial}
-					/>
-				</>
+				// Neon sign, placed where the original modeled lettering sat on the back wall
+				<Text
+					font={'/Redrum.otf'}
+					position={[-3.665, 2.83, 0.9]}
+					rotation={[0, Math.PI / 2, 0]}
+					fontSize={0.3}
+					maxWidth={2.7}
+					anchorX="center"
+					anchorY="middle"
+					material={textMaterial}
+				>
+					CLEANING HORRORS
+				</Text>
 			)}
 			{visibleParts.exit && (
 				<mesh

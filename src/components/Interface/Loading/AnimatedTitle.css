@@ -3,9 +3,21 @@
 	z-index: 1;
 	max-width: 100%;
 	height: auto;
+	overflow: visible;
 }
 
-.animated-title path {
-	stroke: #efd89b;
-	fill: none;
+.animated-title .title-word {
+	font-family: 'Redrum', serif;
+	font-size: 78px;
+	stroke: #e0283c;
+	stroke-width: 1.5;
+	fill: #b3001b;
+	filter: drop-shadow(0 0 10px rgba(179, 0, 27, 0.55));
+}
+
+.animated-title .title-tagline {
+	font-family: 'Lincoln Road Regular', serif;
+	font-size: 16px;
+	letter-spacing: 0.45em;
+	fill: #9b6bb3;
 }

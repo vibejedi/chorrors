@@ -183,7 +183,7 @@ function createWindow() {
 	mainWindow = new BrowserWindow({
 		width: width,
 		height: height,
-		title: 'Skull Hotel',
+		title: 'Cleaning Horrors',
 		icon: path.join(
 			process.cwd(),
 			'public',

@@ -1,11 +1,11 @@
 {
-	"name": "skullhotel",
+	"name": "cleaning-horrors",
 	"version": "1.1.0",
 	"type": "commonjs",
 	"license": "MIT",
 	"main": "electron/main.js",
-	"description": "Skull Hotel Game",
-	"author": "Skull Hotel Team",
+	"description": "Cleaning Horrors - a Horrors.Fun game",
+	"author": "Horrors.Fun",
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
@@ -48,7 +48,7 @@
 	},
 	"build": {
 		"appId": "3739730",
-		"productName": "Skull Hotel",
+		"productName": "Cleaning Horrors",
 		"files": [
 			"build/**/*",
 			"electron/**/*",

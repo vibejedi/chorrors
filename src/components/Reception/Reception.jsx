@@ -398,6 +398,7 @@ export default function Reception(props) {
 
 			<WallsLightMaterial
 				lightMapPath="/textures/reception/reception_light_uastc.ktx2"
+				lightMapMask={[0.0866, 0.333, 0.113, 0.497]}
 				geometry={nodes.ReceptionWalls.geometry}
 				redLightColor={receptionLight1.color}
 				redLightIntensity={receptionLight1.intensity}

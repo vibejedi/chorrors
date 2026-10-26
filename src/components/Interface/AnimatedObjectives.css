@@ -9,7 +9,7 @@
 }
 
 .animated-objectives path {
-	stroke: #efd89b;
+	stroke: #E0283C;
 	stroke-linecap: round;
 	stroke-linejoin: round;
 	vector-effect: non-scaling-stroke;
@@ -33,7 +33,7 @@
 
 .objectives li.completed .text-content {
 	text-decoration: line-through;
-	text-decoration-color: #efd89b;
+	text-decoration-color: #E0283C;
 	text-decoration-thickness: 2px;
 	opacity: 0.7;
 }
@@ -49,13 +49,13 @@
 	top: 0;
 	opacity: 1;
 	white-space: nowrap;
-	color: #efd89b;
+	color: #E0283C;
 	transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .text-content.old {
 	position: relative;
-	text-decoration-color: #efd89b;
+	text-decoration-color: #E0283C;
 	text-decoration-thickness: 2px;
 }
 

@@ -1,6 +1,6 @@
 {
 	"appId": "com.skullhotel.app",
-	"productName": "Skull Hotel",
+	"productName": "Cleaning Horrors",
 	"directories": {
 		"output": "dist"
 	},
@@ -17,6 +17,6 @@
 		"allowToChangeInstallationDirectory": true,
 		"createDesktopShortcut": true,
 		"createStartMenuShortcut": true,
-		"shortcutName": "Skull Hotel"
+		"shortcutName": "Cleaning Horrors"
 	}
 }

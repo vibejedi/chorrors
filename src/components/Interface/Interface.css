@@ -42,15 +42,18 @@
 	pointer-events: none;
 }
 
-.skull-hotel-logo {
+.horrors-logo {
 	min-width: 18rem;
 	height: 18rem;
 	display: block;
-	color: #8b0000;
+	object-fit: contain;
+	/* The logo art sits on black; screen drops the black out over any backdrop */
+	mix-blend-mode: screen;
+	-webkit-user-drag: none;
 }
 
 @media (max-height: 500px) {
-	.skull-hotel-logo {
+	.horrors-logo {
 		min-width: 12rem;
 		height: 12rem !important;
 	}
@@ -67,10 +70,10 @@
 
 .dialogue-popup {
 	position: absolute;
-	background: rgba(8, 8, 7, 0.9);
+	background: rgba(10, 5, 7, 0.9);
 	font-size: 1.25rem;
 	/* color: #ffffff; */
-	color: #efd89b;
+	color: #E0283C;
 	font-family: 'Lincoln Road', serif;
 	border-radius: 0.5rem;
 	padding: 0 2rem;
@@ -207,9 +210,9 @@
 }
 
 .objectives-title {
-	font-family: 'Lincoln Road Deco', serif;
+	font-family: 'Redrum', 'Lincoln Road Deco', serif;
 	font-size: 2rem;
-	color: #efd89b;
+	color: #E0283C;
 }
 
 .objectives-flex {
@@ -224,7 +227,7 @@
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background: rgba(8, 8, 7, 0.98);
+	background: rgba(10, 5, 7, 0.98);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -242,14 +245,14 @@
 }
 
 .end-screen > svg > path {
-	fill: #efd89b;
+	fill: #E0283C;
 }
 
 .end-message {
-	color: #efd89b;
+	color: #E0283C;
 	font-size: 2rem;
 	text-align: center;
-	font-family: 'Lincoln Road Deco', serif;
+	font-family: 'Redrum', 'Lincoln Road Deco', serif;
 	letter-spacing: 1px;
 	font-weight: 400;
 }
@@ -260,10 +263,10 @@
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-	border: 1px solid #777d90;
+	border: 1px solid #8E7A99;
 	border-radius: 0.5rem;
 	cursor: pointer;
-	color: #777d90;
+	color: #8E7A99;
 	padding: 0.5rem;
 	font-family: 'Lincoln Road', serif;
 }
@@ -330,8 +333,8 @@
 
 .full-screen-button {
 	background: transparent;
-	border: 1px solid #777d90;
-	color: #777d90;
+	border: 1px solid #8E7A99;
+	color: #8E7A99;
 	font-size: 1rem;
 	display: flex;
 	align-items: center;
@@ -355,7 +358,7 @@
 }
 
 .full-screen-button svg path {
-	fill: #777d90;
+	fill: #8E7A99;
 }
 
 .full-screen-button:hover svg path {
@@ -493,13 +496,13 @@
 	top: 0;
 	opacity: 1;
 	white-space: nowrap;
-	color: #efd89b;
+	color: #E0283C;
 	transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .animated-objective-text .text-content.old {
 	position: relative;
-	text-decoration-color: #efd89b;
+	text-decoration-color: #E0283C;
 	text-decoration-thickness: 2px;
 }
 

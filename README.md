@@ -1,15 +1,19 @@
-<div align="center" style="display: flex; justify-content: center; align-items: center; gap: 16px;">
-  <img src="./assets/main.jpg" alt="Skull Hotel" style="margin-bottom: 20px;">
+<div align="center">
+  <img src="./assets/horrors-fun-banner.png" alt="Horrors.Fun">
 </div>
 
-In Skull Hotel, you play as a housekeeper tasked with cleaning 8 hotel rooms. Beware - deadly entities lurk in 50% of these rooms, waiting for your arrival. With 30 potential hiding spots randomly selected in each playthrough, your survival depends on vigilance: scrutinize every corner, listen carefully for unusual sounds, and remain alert at all times. The "guests" of Skull Hotel always leave subtle clues to their presence - spotting these hints is your only chance to survive.
+# Cleaning Horrors
+
+**A Horrors.Fun game.** You're the new housekeeper on the night shift. Clean 8 rooms, but something is hiding in half of them, and never the same ones twice. With 30 potential hiding spots shuffled every playthrough, your survival depends on vigilance: check every corner, listen for unusual sounds, and stay alert. The "guests" always leave subtle clues. Spotting them is your only chance to make it to morning.
+
+Cleaning Horrors is built on [Skull Hotel](https://github.com/JamesHall38/skullhotel.io) by James Hall, released under the MIT License. The original copyright notice is kept in [LICENSE](./LICENSE).
 
 ## Installation
 
 ```bash
 # Clone the repository
-git clone https://github.com/JamesHall38/skullhotel.io.git
-cd skullhotel
+git clone <this-repo-url> cleaning-horrors
+cd cleaning-horrors
 
 # Install dependencies
 npm install
@@ -39,7 +43,10 @@ The console displays your current game seed with each enemy type represented by 
   <img src="./assets/grid-visualization.png" alt="Room Grid Visualization">
 </div>
 
-## Resources 📚
+## Credits 📚
+
+- **James Hall**: original game concept, design & development (Skull Hotel)
+- **Lucas Houbre**: original user interface & art direction
 
 - **Mixamo**: Character model and animations
 - **BlenderKit**: 3D assets

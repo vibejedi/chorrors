@@ -1,6 +1,6 @@
 {
-	"name": "Skull Hotel",
-	"short_name": "Skull Hotel",
+	"name": "Cleaning Horrors",
+	"short_name": "Cleaning Horrors",
 	"icons": [
 		{
 			"src": "/images/web-app-manifest-192x192.png",
@@ -15,7 +15,7 @@
 			"purpose": "maskable"
 		}
 	],
-	"theme_color": "#efd89b",
-	"background_color": "#000000",
+	"theme_color": "#E0283C",
+	"background_color": "#0A0507",
 	"display": "standalone"
 }

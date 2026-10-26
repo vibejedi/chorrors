@@ -14,6 +14,8 @@ export default function WallsLightMaterial({
 	blueLightColor,
 	blueLightIntensity,
 	uvScale = 1,
+	// [u0, v0, u1, v1] lightmap region to inpaint across u (hides baked signage)
+	lightMapMask = null,
 }) {
 	const materialRef = useRef();
 	const performanceMode = useGame((state) => state.performanceMode);
@@ -60,6 +62,9 @@ export default function WallsLightMaterial({
 				shader.uniforms.uGreenLightIntensity = {
 					value: greenLightIntensity,
 				};
+				shader.uniforms.uLightMapMask = {
+					value: new THREE.Vector4(...(lightMapMask || [-1, -1, -1, -1])),
+				};
 
 				material.userData.shader = shader;
 
@@ -72,6 +77,7 @@ export default function WallsLightMaterial({
 							uniform float uBlueLightIntensity;
 							uniform vec3 uGreenLightColor;
 							uniform float uGreenLightIntensity;
+							uniform vec4 uLightMapMask;
 						` + shader.fragmentShader;
 
 				shader.fragmentShader = shader.fragmentShader.replace(
@@ -92,6 +98,16 @@ export default function WallsLightMaterial({
 					`
 							#ifdef USE_LIGHTMAP
 								vec4 customLightMapTexel = texture2D(lightMap, vLightMapUv);
+
+								if (vLightMapUv.x > uLightMapMask.x && vLightMapUv.x < uLightMapMask.z &&
+									vLightMapUv.y > uLightMapMask.y && vLightMapUv.y < uLightMapMask.w) {
+									vec2 maskT = (vLightMapUv - uLightMapMask.xy) / (uLightMapMask.zw - uLightMapMask.xy);
+									vec4 maskEdgeA = texture2D(lightMap, vec2(uLightMapMask.x, vLightMapUv.y));
+									vec4 maskEdgeB = texture2D(lightMap, vec2(uLightMapMask.z, vLightMapUv.y));
+									customLightMapTexel = mix(maskEdgeA, maskEdgeB, maskT.x);
+									// Soft halo so the wall still glows behind the neon sign
+									customLightMapTexel.r += 0.08 * sin(3.14159 * maskT.x) * sin(3.14159 * maskT.y);
+								}
 								
 								float redLightIntensity = customLightMapTexel.r;
 								float blueLightIntensity = customLightMapTexel.b;

@@ -59,7 +59,7 @@
 /* Guest Book Popup */
 
 .guestbook-content {
-	background: rgba(8, 8, 7, 0.8);
+	background: rgba(10, 5, 7, 0.8);
 	border-radius: 0.5rem;
 	color: #f8f8f8;
 	font-family: 'Lincoln Road', serif;
@@ -116,8 +116,8 @@
 .guestbook-content h2 {
 	margin: 0;
 	font-size: 2rem;
-	font-family: 'Lincoln Road Deco', serif;
-	color: #efd89b;
+	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	color: #E0283C;
 	font-weight: 400;
 	margin-bottom: 1rem;
 	display: flex;
@@ -158,8 +158,8 @@
 
 .guestbook-retry {
 	background: transparent;
-	color: #777d90;
-	border: 1px solid #777d90;
+	color: #8E7A99;
+	border: 1px solid #8E7A99;
 	border-radius: 0.5rem;
 	padding: 6px 12px;
 	cursor: pointer;
@@ -185,8 +185,8 @@
 .loading-spinner {
 	width: 40px;
 	height: 40px;
-	border: 3px solid rgba(239, 216, 155, 0.3);
-	border-top: 3px solid #efd89b;
+	border: 3px solid rgba(224, 40, 60, 0.3);
+	border-top: 3px solid #E0283C;
 	border-radius: 50%;
 	animation: spin 1s linear infinite;
 }
@@ -241,8 +241,8 @@
 	position: sticky;
 	top: 0;
 	z-index: 1;
-	color: #efd89b;
-	font-family: 'Lincoln Road Deco', serif;
+	color: #E0283C;
+	font-family: 'Redrum', 'Lincoln Road Deco', serif;
 	font-weight: 400;
 	letter-spacing: 1px;
 }
@@ -275,7 +275,7 @@
 }
 
 .guestbook-entry:hover .guestbook-rank {
-	color: #efd89b;
+	color: #E0283C;
 }
 
 .guestbook-entry-left {
@@ -308,7 +308,7 @@
 .entry-details-tooltip {
 	position: absolute;
 	background: rgba(0, 0, 0, 0.9);
-	border: 1px solid rgba(239, 216, 155, 0.3);
+	border: 1px solid rgba(224, 40, 60, 0.3);
 	border-radius: 0.25rem;
 	padding: 0.5rem 0.75rem;
 	color: #f8f8f8;
@@ -334,7 +334,7 @@
 }
 
 .tooltip-value {
-	color: #efd89b;
+	color: #E0283C;
 	font-size: 0.85rem;
 }
 
@@ -382,7 +382,7 @@
 }
 
 .pagination-button:hover:not(:disabled) {
-	background: rgba(239, 216, 155, 0.1);
+	background: rgba(224, 40, 60, 0.1);
 }
 
 .hover-visible-path {
@@ -403,7 +403,7 @@
 
 	gap: 5px;
 	font-family: 'Lincoln Road', serif;
-	color: #efd89b;
+	color: #E0283C;
 
 	margin-bottom: 1rem;
 }
@@ -431,13 +431,13 @@
 
 .page-input:focus {
 	outline: none;
-	border-color: #efd89b;
+	border-color: #E0283C;
 }
 
 .go-button {
 	background: transparent;
-	color: #777d90;
-	border: 1px solid #777d90;
+	color: #8E7A99;
+	border: 1px solid #8E7A99;
 	border-radius: 0.5rem;
 	padding: 8px 12px;
 	cursor: pointer;
@@ -449,7 +449,7 @@
 }
 
 .page-info {
-	color: #efd89b;
+	color: #E0283C;
 	width: 5rem;
 	text-align: center;
 }

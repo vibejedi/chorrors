@@ -406,20 +406,20 @@ function GuestBookContent({ onClose }) {
 								style={{ transform: 'rotate(180deg)' }}
 							>
 								<path
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="m 1.0389507,10.982586 34.3607143,0.01914 6.598599,-6.5859935 6.588051,6.5828805 -6.529849,6.59752 -6.700832,-6.638602"
 								/>
 								<path
 									className="hover-visible-path"
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="m 42.001891,8.7266442 -2.250247,2.2561638 2.347328,2.242759 2.235597,-2.22926 -2.331013,-2.273454"
 								/>
 								<path
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="M 46.003006,20.999675 56.005687,10.988951 45.980124,0.97633252"
@@ -435,20 +435,20 @@ function GuestBookContent({ onClose }) {
 						>
 							<svg width="57" height="22">
 								<path
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="m 1.0389507,10.982586 34.3607143,0.01914 6.598599,-6.5859935 6.588051,6.5828805 -6.529849,6.59752 -6.700832,-6.638602"
 								/>
 								<path
 									className="hover-visible-path"
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="m 42.001891,8.7266442 -2.250247,2.2561638 2.347328,2.242759 2.235597,-2.22926 -2.331013,-2.273454"
 								/>
 								<path
-									stroke="#efd89b"
+									stroke="#E0283C"
 									strokeWidth={2}
 									fill="none"
 									d="M 46.003006,20.999675 56.005687,10.988951 45.980124,0.97633252"

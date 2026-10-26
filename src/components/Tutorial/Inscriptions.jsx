@@ -4,13 +4,13 @@ import * as THREE from 'three';
 
 const inscriptions = [
 	{
-		content: 'If you see a client inside a room',
+		content: 'If you see a guest inside a room',
 		position: [13.49, 2, -1],
 		rotation: [0, -Math.PI / 2, 0],
 		scale: 0.2,
 	},
 	{
-		content: ' turn around before he kills you',
+		content: ' turn around before it kills you',
 		position: [13.49, 1.75, -1],
 		rotation: [0, -Math.PI / 2, 0],
 		scale: 0.2,
@@ -93,10 +93,10 @@ export default function Inscriptions({ endTitle }) {
 						font={'/Redrum.otf'}
 						position={[1.4, 1.9, 7.85]}
 						rotation={[0, Math.PI / 2, 0]}
-						scale={0.3}
+						scale={0.22}
 						material={textMaterial}
 					>
-						Skull Hotel
+						Cleaning Horrors
 					</Text>
 				</>
 			) : (

@@ -19,22 +19,22 @@
 			"crouch": "Crouch",
 			"jump": "Jump",
 			"resetProgress": "Reset progress",
-			"reportBug": "Report a bug",
-			"exitGame": "EXIT GAME"
+			"reportBug": "Report a glitch",
+			"exitGame": "ESCAPE"
 		},
 		"bugReport": {
-			"title": "REPORT A BUG",
-			"description": "Please describe the bug you encountered",
-			"placeholder": "What happened? What were you doing when the bug occurred? Any other details that might help us fix it?",
+			"title": "REPORT A GLITCH",
+			"description": "Something broke (other than your nerves)? Tell us what happened.",
+			"placeholder": "What happened? What were you doing when it went wrong? Any detail helps us hunt it down.",
 			"submit": "Submit Report",
 			"submitting": "Submitting...",
 			"cancel": "Cancel",
-			"success": "Thank you for your report! We'll look into it.",
-			"submitError": "Failed to submit bug report. Please try again."
+			"success": "Got it. Our exorcists are on the case.",
+			"submitError": "The report got lost in the dark. Please try again."
 		},
 		"loading": {
-			"loading": "LOADING",
-			"clickToStart": "CLICK TO START",
+			"loading": "SUMMONING",
+			"clickToStart": "CLICK TO CLOCK IN",
 			"settings": "Settings"
 		},
 		"tutorial": {
@@ -55,29 +55,29 @@
 		},
 		"objectives": {
 			"findExit": "Find the exit",
-			"refillSoapBottles": "Refill soap bottles",
+			"refillSoapBottles": "Refill the soap bottles",
 			"makeTheBed": "Make the bed",
 			"openTheWindow": "Open the window",
-			"clearLeftovers": "Clear leftovers",
-			"cleanBathroom": "Clean the bathroom"
+			"clearLeftovers": "Clear the leftovers",
+			"cleanBathroom": "Scrub the bathroom"
 		},
 		"deathScreen": {
 			"youDied": "YOU DIED",
-			"hidingSpotsFound": " hiding spots found",
-			"continue": "CONTINUE",
-			"restarting": "Restarting..."
+			"hidingSpotsFound": " hiding spots uncovered",
+			"continue": "CLOCK BACK IN",
+			"restarting": "Reviving..."
 		},
 		"endGameScreen": {
-			"thankYouForPlaying": "THANK YOU FOR PLAYING",
-			"yourTime": "Your time:",
+			"thankYouForPlaying": "YOU SURVIVED THE NIGHT SHIFT",
+			"yourTime": "Time on the clock:",
 			"death": "death",
 			"deaths": "deaths",
 			"enterYourName": "Enter your name",
 			"signGuestBook": "Sign the Guest Book",
 			"saving": "Saving...",
-			"submissionSuccess": "You can see your entry on the reception desk",
-			"playAgain": "PLAY AGAIN",
-			"restarting": "RESTARTING...",
+			"submissionSuccess": "Your name is in the Guest Book at the reception desk. In ink, this time.",
+			"playAgain": "ANOTHER SHIFT",
+			"restarting": "CLOCKING IN...",
 			"nameValidation": {
 				"tooShort": "Name must be at least {{min}} characters",
 				"tooLong": "Name must be at most {{max}} characters",
@@ -86,51 +86,44 @@
 			}
 		},
 		"howItsMade": {
-			"title": "How it's made",
+			"title": "Behind the Screams",
 			"technologies": "TECHNOLOGIES",
 			"people": "PEOPLE",
-			"openSource": "This is an open source project. Check out the",
+			"openSource": "A Horrors.Fun game, built on Skull Hotel, the open-source game by James Hall. Check out the original",
 			"githubRepository": "GitHub repository",
 			"threejsDescription": "A JavaScript library for creating 3D graphics in the browser",
 			"createdBy": "Created by",
 			"r3fDescription": "A tool that makes it easier to use three.js with React",
 			"threejsJourneyDescription": "An online course to learn 3D for the web",
-			"gameConceptDesignDev": "Game concept, game design & game development",
-			"uiArtDirection": "User interface & Art direction"
+			"gameConceptDesignDev": "Original game concept, design & development",
+			"uiArtDirection": "Original user interface & art direction"
 		},
 		"reception": {
 			"guestBook": "Guest Book",
-			"informations": "Informations",
-			"guestBookSubtitle": "Complete the game to register your name",
+			"informations": "Credits",
+			"guestBookSubtitle": "Survive your shift to sign it",
 			"searchPlaceholder": "Enter a page number or search a name",
 			"completionTime": "Completion Time",
 			"time": "Time",
 			"deaths": "Deaths",
 			"date": "Date"
 		},
-		"crossPromo": {
-			"title": "FROM THE CREATORS OF SKULL HOTEL",
-			"description": "Same concept, taken to the next level. Co-op and random maps every run.",
-			"cta": "WISHLIST ON STEAM",
-			"message": "Enjoy Skull Hotel? Try Sly Apes, our next game. Same concept, taken to the next level.",
-			"ctaSmall": "Wishlist now"
-		},
 		"close": "Close"
 	},
 	"game": {
 		"dialogues": {
 			"locked": "It's locked.",
-			"welcomeBack": "Welcome back.",
-			"welcomeHousekeeper": "Welcome. You must be the new housekeeper.",
-			"closeDoors": "Always close doors behind you or they might enter while you clean the room.",
-			"bathroomWarning": "If you hear something, don't open. But don't rely on that: they can be silent too.",
-			"hideImmediately": "If you hear knocking or notice the TV or radio turning on, hide.",
-			"checkRoom": "Check the entire room carefully. They might be hiding anywhere.",
-			"spotWarning": "If you spot one of them, quickly close the door and exit the room.",
-			"wellDone": "Well done! Now clean 8 rooms to call it a day.",
+			"welcomeBack": "Welcome back. They missed you.",
+			"welcomeHousekeeper": "Ah, fresh meat. You must be the new housekeeper.",
+			"closeDoors": "Always close the door behind you, or they might let themselves in while you clean.",
+			"bathroomWarning": "If you hear something in the bathroom, don't open it. And don't trust the silence: they can be quiet too.",
+			"hideImmediately": "Knocking? The TV or radio switching on by itself? Hide. Now.",
+			"checkRoom": "Check every inch of the room. They love a good hiding spot.",
+			"spotWarning": "If you spot one of them, close the door and get out. Fast.",
+			"wellDone": "Not bad. Now clean 8 rooms and you can call it a night.",
 			"turnBack": "Remember: if you see one of them in a room, turn back immediately.",
-			"infested": "Half of these rooms are randomly infested. Proceed with caution.",
-			"bathroomTasks": "In the bathroom, tasks vary (stains, trash, spiders...). Some are hard to spot."
+			"infested": "Half of these rooms are infested, and never the same ones twice. Tread carefully.",
+			"bathroomTasks": "Bathroom jobs vary: stains, trash, spiders... Some are hard to spot."
 		},
 		"deathReasons": {
 			"underBed": "It was hiding under the bed.",
@@ -140,7 +133,7 @@
 			"bedBasket": "It was hiding in the laundry basket near the bed.",
 			"windowBasket": "It was hiding in the TV stand compartment (at the right of the tv).",
 			"hideoutMirror": "It was hiding in the mirror's reflection. Inspect the reflections carefully.",
-			"behindDoor": "It was waiting behind the door. Always look before closing.",
+			"behindDoor": "It was waiting behind the door. Always look before you close it.",
 			"footWindow": "Its feet were visible under the curtain.",
 			"bathCeiling": "It was hiding on the ceiling.",
 			"servingCart": "It was hiding in the serving cart.",
@@ -151,7 +144,7 @@
 			"behindCouch": "It was hiding behind the couch.",
 			"behindDesk": "It was hiding behind the desk.",
 			"insideDesk": "It was hiding under the desk.",
-			"ceilingCenter": "It was hiding on the ceiling. Check everywhere before moving forward.",
+			"ceilingCenter": "It was on the ceiling. Look up before you move on.",
 			"openedDesk": "It was hiding inside the desk.",
 			"behindServingCart": "It was hiding behind the serving cart.",
 			"bathroomCorner": "It was hiding in the corner.",
@@ -160,22 +153,22 @@
 			"claymoreDesk": "Quickly close the desk door back before it comes out to attack you.",
 			"claymoreNightstand": "Quickly close the nightstand door back before it comes out to attack you.",
 			"claymoreWindow": "Quickly close the curtains back before it comes out to attack you.",
-			"hunterLivingRoom": "They can emerge from hiding at any moment. Exit quickly and close the door.",
-			"hunterCeilingLivingRoom": "They can emerge from hiding at any moment. Exit quickly and close the door.",
-			"hunterNightstand": "They can emerge from hiding at any moment. Exit quickly and close the door.",
-			"hunterWindow": "They can emerge from hiding at any moment. Exit quickly and close the door.",
-			"firstHunter": "They can emerge from hiding at any moment. Exit quickly and close the door.",
+			"hunterLivingRoom": "They can crawl out of hiding at any moment. Get out and close the door.",
+			"hunterCeilingLivingRoom": "They can crawl out of hiding at any moment. Get out and close the door.",
+			"hunterNightstand": "They can crawl out of hiding at any moment. Get out and close the door.",
+			"hunterWindow": "They can crawl out of hiding at any moment. Get out and close the door.",
+			"firstHunter": "They can crawl out of hiding at any moment. Get out and close the door.",
 			"raidBottles": "If you hear knocking, hide.",
 			"raidTV": "If the TV turns on by itself, hide.",
 			"raidRadio": "If the radio turns on by itself, hide.",
-			"raidInscriptions": "If you see blood inscriptions on the walls, hide.",
+			"raidInscriptions": "If blood starts writing on the walls, hide.",
 			"raidFood": "If you hear knocking, hide.",
 			"raidDoor": "Always close the door before cleaning the room.",
-			"claymoreChase": "Always check all hiding spots before cleaning the room."
+			"claymoreChase": "Always check every hiding spot before you start cleaning."
 		},
 		"status": {
-			"thankYouForPlaying": "Thank you for playing",
-			"playAgain": "Play Again"
+			"thankYouForPlaying": "You survived the night shift",
+			"playAgain": "Another shift"
 		}
 	}
 }

@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, memo, useMemo, useRef } from 'react';
 import { useProgress } from '@react-three/drei';
-import SkullHotelLogo from './Logo';
+import HorrorsLogo from './Logo';
 import Settings from './Settings/Settings';
 import { HiMiniArrowDownCircle, HiMiniArrowUpCircle } from 'react-icons/hi2';
 import useGameplaySettings from '../../hooks/useGameplaySettings';
@@ -943,7 +943,7 @@ export default function Interface() {
 					}}
 					className="end-screen"
 				>
-					<SkullHotelLogo />
+					<HorrorsLogo />
 					<div className="end-message">
 						{t('game.status.thankYouForPlaying')}
 					</div>

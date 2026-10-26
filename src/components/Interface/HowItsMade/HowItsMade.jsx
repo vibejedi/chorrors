@@ -7,7 +7,6 @@ import useGame from '../../../hooks/useGame';
 import useLocalization from '../../../hooks/useLocalization';
 import { isSteamBuild } from '../../../utils/platform';
 import './HowItsMade.css';
-import LogoIcon from './logo.svg';
 import R3FIcon from './r3f-icon.svg';
 import ThreeJSJourneyIcon from './threejs-journey-icon.svg';
 
@@ -124,7 +123,7 @@ function HowItsMadeContent({ onClose }) {
 		<div className="how-its-made-content" ref={contentRef}>
 			<div className="how-its-made-header">
 				<div className="how-its-made-header-col">
-					<img src={LogoIcon} alt="Logo" />
+					<img src="./images/hf-logo.png" alt="Horrors.Fun" className="how-its-made-logo" />
 					<h2>{t('ui.howItsMade.title')}</h2>
 					<div className="footer-note">
 						<p>

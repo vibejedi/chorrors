@@ -1,6 +1,6 @@
 @font-face {
-	font-family: 'Redrum';
-	src: url('/Redrum.otf') format('opentype');
+	font-family: 'Metal Mania';
+	src: url('/MetalMania-Regular.ttf') format('truetype');
 }
 
 @font-face {
@@ -210,7 +210,7 @@
 }
 
 .objectives-title {
-	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	font-family: 'Metal Mania', 'Lincoln Road Deco', serif;
 	font-size: 2rem;
 	color: #E0283C;
 }
@@ -252,7 +252,7 @@
 	color: #E0283C;
 	font-size: 2rem;
 	text-align: center;
-	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	font-family: 'Metal Mania', 'Lincoln Road Deco', serif;
 	letter-spacing: 1px;
 	font-weight: 400;
 }

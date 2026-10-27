@@ -53,7 +53,7 @@
 }
 
 .settings-close {
-	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	font-family: 'Metal Mania', 'Lincoln Road Deco', serif;
 	color: #8E7A99;
 	display: flex;
 	align-items: center;
@@ -73,7 +73,7 @@
 }
 
 .settings-quit {
-	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	font-family: 'Metal Mania', 'Lincoln Road Deco', serif;
 	color: #E0283C;
 	display: flex;
 	align-items: center;
@@ -168,7 +168,7 @@
 
 .settings-title {
 	color: #E0283C;
-	font-family: 'Redrum', 'Lincoln Road Deco', serif;
+	font-family: 'Metal Mania', 'Lincoln Road Deco', serif;
 	font-size: 1.5rem;
 	font-weight: 400;
 	letter-spacing: 1px;

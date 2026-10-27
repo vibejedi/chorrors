@@ -173,7 +173,7 @@ export default function Tv() {
 			{showHide && (
 				<group scale={0.1} position={[0.01, 0, 0]}>
 					<Text
-						font={'/Redrum.otf'}
+						font={'/MetalMania-Regular.ttf'}
 						rotation={[0, Math.PI / 2, 0]}
 						material={redTextMaterial}
 						scale={2}

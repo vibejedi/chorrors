@@ -170,7 +170,7 @@ export default function Inscriptions() {
 					rotation={setting.rotation}
 					material={textMaterial}
 					fontSize={0.3}
-					font="/Redrum.otf"
+					font="/MetalMania-Regular.ttf"
 					opacity={fadeValues.current[index]}
 					visible={fadeValues.current[index] > 0}
 				>

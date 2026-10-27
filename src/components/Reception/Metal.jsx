@@ -75,7 +75,7 @@ export default function Metal() {
 			{visibleParts.text && (
 				// Neon sign, placed where the original modeled lettering sat on the back wall
 				<Text
-					font={'/Redrum.otf'}
+					font={'/MetalMania-Regular.ttf'}
 					position={[-3.665, 2.83, 0.9]}
 					rotation={[0, Math.PI / 2, 0]}
 					fontSize={0.3}

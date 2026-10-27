@@ -90,7 +90,7 @@ export default function Inscriptions({ endTitle }) {
 			{endTitle ? (
 				<>
 					<Text
-						font={'/Redrum.otf'}
+						font={'/MetalMania-Regular.ttf'}
 						position={[1.4, 1.9, 7.85]}
 						rotation={[0, Math.PI / 2, 0]}
 						scale={0.22}
@@ -103,7 +103,7 @@ export default function Inscriptions({ endTitle }) {
 				inscriptions.map((inscription, index) => (
 					<Text
 						key={index}
-						font={'/Redrum.otf'}
+						font={'/MetalMania-Regular.ttf'}
 						position={inscription.position}
 						rotation={inscription.rotation}
 						material={textMaterial}

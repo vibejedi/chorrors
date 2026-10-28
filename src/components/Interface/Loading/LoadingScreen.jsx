@@ -9,6 +9,7 @@ import TrianglePattern from './TrianglePattern';
 import useInterface from '../../../hooks/useInterface';
 import useLocalization from '../../../hooks/useLocalization';
 import './LoadingScreen.css';
+import { RankedPanel } from '../Ranked/Ranked';
 
 const LoadingScreen = ({ onStart }) => {
 	const { progress } = useProgress();
@@ -252,6 +253,7 @@ const LoadingScreen = ({ onStart }) => {
 							{t('ui.loading.clickToStart')}
 						</div>
 					)}
+					<RankedPanel />
 					<div
 						className="settings lincoln-regular"
 						onClick={handleSettingsClick}

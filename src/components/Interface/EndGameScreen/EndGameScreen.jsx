@@ -9,6 +9,8 @@ import useLocalization from '../../../hooks/useLocalization';
 import HorrorsLogo from '../Logo';
 import './EndGameScreen.css';
 import { regenerateData } from '../../../utils/config';
+import { RankedResult } from '../Ranked/Ranked';
+import { setRankedName } from '../../../services/rankedService';
 import {
 	exitPointerLock,
 	requestPointerLock,
@@ -298,6 +300,7 @@ const EndGameScreen = () => {
 					? 'skullhotel_debug_last_player_name'
 					: 'skullhotel_last_player_name';
 				localStorage.setItem(storageKey, playerName.trim());
+				if (!isDebugMode) setRankedName(playerName.trim());
 			} catch (error) {
 				console.error('Failed to submit score before restart:', error);
 			}
@@ -406,6 +409,7 @@ const EndGameScreen = () => {
 					? 'skullhotel_debug_last_player_name'
 					: 'skullhotel_last_player_name';
 				localStorage.setItem(storageKey, playerName.trim());
+				if (!isDebugMode) setRankedName(playerName.trim());
 
 				if (window.steamAPI && window.steamAPI.guestbookSigned) {
 					window.steamAPI.guestbookSigned();
@@ -468,6 +472,7 @@ const EndGameScreen = () => {
 							: 'ui.endGameScreen.deaths'
 					)}
 				</div>
+				<RankedResult />
 			</div>
 
 			{firestoreReachable !== true ? null : !submitted ? (

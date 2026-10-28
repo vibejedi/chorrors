@@ -63,6 +63,7 @@ import useGameplaySettings from './hooks/useGameplaySettings';
 import useSettings from './hooks/useSettings';
 import ShadowManager from './components/ShadowManager';
 import EndGameAnimation from './components/EndGameAnimation';
+import RankedTracker from './components/RankedTracker';
 import { isPointerLocked, exitPointerLock } from './utils/pointerLock';
 import { isElectron } from './utils/platform';
 
@@ -511,6 +512,7 @@ function App() {
 				<Sound />
 				<Tutorial />
 				<EndGameAnimation />
+				<RankedTracker />
 
 				{shouldRenderThreeJs && (
 					<>

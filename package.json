@@ -24,7 +24,6 @@
 		"@react-three/drei": "^9.122.0",
 		"@react-three/fiber": "^8.18.0",
 		"@react-three/postprocessing": "^2.16.7",
-		"@solana/web3.js": "1.98.4",
 		"@types/three": "^0.180.0",
 		"leva": "^0.9.35",
 		"postprocessing": "^6.37.8",

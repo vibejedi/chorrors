@@ -243,7 +243,7 @@ const LoadingScreen = ({ onStart }) => {
 							? `${t('ui.loading.loading')}: ${displayProgress.toFixed(0)}%`
 							: signedIn
 								? t('ui.loading.clickToStart')
-								: 'Sign in below to clock in'}
+								: 'Sign in on horrors.fun to clock in'}
 					</div>
 					{displayProgress !== 100 && isStuck && (
 						<div

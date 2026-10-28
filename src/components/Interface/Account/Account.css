@@ -144,3 +144,8 @@
 .run-result.bad {
 	color: #e0283c;
 }
+.account-panel a.account-button,
+.account-panel a.account-link {
+	text-align: center;
+	text-decoration: none;
+}

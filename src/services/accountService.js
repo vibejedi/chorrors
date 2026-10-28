@@ -1,8 +1,9 @@
 // Player accounts and server-verified runs, backed by api.horrors.fun.
 //
-// Nobody clocks in without an account:
-//   free   - username, payout wallet address and a password (the same username + password logs back in)
-//   ranked - connect a Solana wallet, pick a username, and burn $HORRORS once for the season
+// Players sign up, sign in and burn on horrors.fun, never here. That sets a session cookie for all of horrors.fun;
+// this game swaps it for a bearer token (POST /v1/auth/session). Nobody clocks in without one:
+//   free   - username, payout wallet address and a password
+//   ranked - connected Solana wallet that burned $HORRORS for the week
 // Every run streams to the server, which times it on its own clock and checks it. This file only reports what
 // happens in the game; it never decides a result.
 import { create } from 'zustand';
@@ -10,35 +11,17 @@ import useGame from '../hooks/useGame';
 import useInterface from '../hooks/useInterface';
 
 const API = import.meta.env.VITE_HORRORS_API || 'https://api.horrors.fun';
-const STORAGE_KEY = 'horrors_account_session';
+export const SIGN_IN_URL = 'https://horrors.fun/#play';
 const LAST_NAME_KEY = 'skullhotel_last_player_name';
 const FLUSH_MS = 3000;
-const BURN_POLL_MS = 3000;
-const BURN_POLL_TRIES = 40;
 
 const isDebug = () => window.location.hash.includes('#debug');
 
-function loadSession() {
-	try {
-		const s = JSON.parse(localStorage.getItem(STORAGE_KEY));
-		return s && s.expiresAt > Date.now() + 60 * 60 * 1000 ? s : null;
-	} catch {
-		return null;
-	}
-}
-
 export const shortWallet = (w) => (w ? `${w.slice(0, 4)}…${w.slice(-4)}` : '');
 
-export function getWalletProvider() {
-	return window.phantom?.solana || window.solflare || window.backpack || window.solana || null;
-}
-
 const useAccount = create((set) => ({
-	session: loadSession(), // { token, expiresAt, username, wallet, walletVerified, ranked }
-	busy: null, // what we're waiting on, for the UI: 'signin' | 'wallet' | 'burn'
-	error: null,
-	claim: null, // a new wallet waiting for a username
-	token: null, // $HORRORS config from the server
+	checked: false, // the first session check has finished
+	session: null, // { token, expiresAt, username, wallet, walletVerified, ranked }
 	run: null, // { id, mode, status: 'running' | 'rejected' | 'done', reason, verdict, durationMs }
 	set: (patch) => set(patch),
 }));
@@ -53,8 +36,7 @@ export const canClockIn = () => isDebug() || !!useAccount.getState().session;
 async function api(path, { method = 'GET', body, token } = {}) {
 	const res = await fetch(API + path, {
 		method,
-		// Lets the API set its horrors.fun-wide sign-in cookie, so horrors.fun knows who you are too.
-		credentials: 'include',
+		credentials: 'include', // the horrors.fun session cookie
 		headers: { 'content-type': 'application/json', ...(token ? { authorization: `Bearer ${token}` } : {}) },
 		body: body ? JSON.stringify(body) : undefined,
 	});
@@ -63,152 +45,22 @@ async function api(path, { method = 'GET', body, token } = {}) {
 	return data;
 }
 
-function saveSession(session) {
-	localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
-	// The guest book on the end screen starts with the account's name.
-	localStorage.setItem(LAST_NAME_KEY, session.username);
-	patch({ session, busy: null, error: null, claim: null });
+/** Picks up the sign-in from horrors.fun. Safe to call again, e.g. when the player comes back to this tab. */
+export async function checkSession() {
+	try {
+		const session = await api('/v1/auth/session', { method: 'POST' });
+		// The guest book on the end screen starts with the account's name.
+		localStorage.setItem(LAST_NAME_KEY, session.username);
+		patch({ session, checked: true });
+	} catch (err) {
+		if (err.status === 401 || err.status === 403) patch({ session: null });
+		patch({ checked: true });
+	}
 }
 
 export function signOut() {
 	api('/v1/auth/logout', { method: 'POST' }).catch(() => {});
-	localStorage.removeItem(STORAGE_KEY);
-	patch({ session: null, run: null, claim: null, error: null });
-}
-
-export async function loadTokenConfig() {
-	try {
-		patch({ token: await api('/v1/token') });
-	} catch {
-		// The panel shows ranked as unavailable until this loads.
-	}
-}
-
-/** Re-reads the account (ranked status can change after a burn) and drops a session the server no longer accepts. */
-export async function refreshAccount() {
-	const { session } = useAccount.getState();
-	if (!session) return;
-	try {
-		const me = await api('/v1/me', { token: session.token });
-		saveSession({ ...session, ...me });
-	} catch (err) {
-		if (err.status === 401 || err.status === 403) signOut();
-	}
-}
-
-// ---------- free play ----------
-
-export async function signInFree({ username, wallet, password }) {
-	patch({ busy: 'signin', error: null });
-	try {
-		const body = { username: username.trim(), password };
-		if (wallet.trim()) body.wallet = wallet.trim();
-		saveSession(await api('/v1/accounts/free', { method: 'POST', body }));
-	} catch (err) {
-		patch({ busy: null, error: err.message });
-	}
-}
-
-// ---------- wallet connect (ranked) ----------
-
-const toBase64 = (bytes) => btoa(String.fromCharCode(...bytes));
-
-export async function connectWallet() {
-	const provider = getWalletProvider();
-	if (!provider) {
-		patch({ error: 'no_wallet' });
-		return;
-	}
-	patch({ busy: 'wallet', error: null });
-	try {
-		const { publicKey } = await provider.connect();
-		const wallet = publicKey.toString();
-		const { nonce, message } = await api('/v1/auth/nonce', { method: 'POST', body: { wallet } });
-		const signed = await provider.signMessage(new TextEncoder().encode(message), 'utf8');
-		const signature = toBase64(signed.signature || signed);
-		const res = await api('/v1/auth/verify', { method: 'POST', body: { wallet, nonce, signature } });
-		if (res.needsUsername) patch({ busy: null, claim: { ticket: res.claim, wallet } });
-		else saveSession(res);
-	} catch (err) {
-		patch({ busy: null, error: err.code === 4001 ? 'declined' : err.message });
-	}
-}
-
-/** A new wallet picks a username, or attaches itself to an existing free account with that account's password. */
-export async function claimUsername({ username, password }) {
-	const { claim } = useAccount.getState();
-	if (!claim) return;
-	patch({ busy: 'signin', error: null });
-	try {
-		const body = { claim: claim.ticket, username: username.trim() };
-		if (password) body.password = password;
-		saveSession(await api('/v1/auth/claim', { method: 'POST', body }));
-	} catch (err) {
-		patch({ busy: null, error: err.message === 'claim_expired' ? 'claim_expired' : err.message, ...(err.message === 'claim_expired' ? { claim: null } : {}) });
-	}
-}
-
-// ---------- burn to play ranked (ported from GoldScape's burn-to-play) ----------
-
-const ATA_PROGRAM = 'ATokenGPvbdGVxr1b2hvZbsiqW5xWH25efTNsLJA8knL';
-
-export async function burnForRanked() {
-	const { session } = useAccount.getState();
-	const provider = getWalletProvider();
-	if (!session?.walletVerified || !provider) {
-		patch({ error: 'connect_wallet' });
-		return;
-	}
-	patch({ busy: 'burn', error: null });
-	try {
-		const prep = await api('/v1/burn/prepare', { token: session.token });
-		if (!prep.launched) throw new Error('not_launched');
-		const { PublicKey, Transaction, TransactionInstruction, ComputeBudgetProgram } = await import('@solana/web3.js');
-		const owner = new PublicKey(session.wallet);
-		const mint = new PublicKey(prep.mint);
-		const tokenProgram = new PublicKey(prep.tokenProgram);
-		// The player's token account for this mint (the associated token account).
-		const [account] = PublicKey.findProgramAddressSync([owner.toBuffer(), tokenProgram.toBuffer(), mint.toBuffer()], new PublicKey(ATA_PROGRAM));
-		// SPL BurnChecked: instruction 15, amount as u64 little-endian, then decimals.
-		const data = new Uint8Array(10);
-		data[0] = 15;
-		new DataView(data.buffer).setBigUint64(1, BigInt(prep.burnAmount) * 10n ** BigInt(prep.decimals), true);
-		data[9] = prep.decimals;
-		const tx = new Transaction();
-		// Priority fee: without one a burn can sit unconfirmed on a busy network until its blockhash expires.
-		tx.add(ComputeBudgetProgram.setComputeUnitPrice({ microLamports: 1000 }));
-		tx.add(
-			new TransactionInstruction({
-				programId: tokenProgram,
-				keys: [
-					{ pubkey: account, isSigner: false, isWritable: true },
-					{ pubkey: mint, isSigner: false, isWritable: true },
-					{ pubkey: owner, isSigner: true, isWritable: false },
-				],
-				data,
-			})
-		);
-		tx.feePayer = owner;
-		tx.recentBlockhash = prep.blockhash;
-
-		await provider.connect();
-		if (provider.publicKey && provider.publicKey.toString() !== session.wallet) throw new Error('wrong_wallet');
-		const sent = await provider.signAndSendTransaction(tx);
-		const signature = typeof sent === 'string' ? sent : sent.signature;
-
-		// The server re-reads the burn from the chain; it may take a few seconds to show up.
-		for (let i = 0; i < BURN_POLL_TRIES; i++) {
-			const res = await api('/v1/burn', { method: 'POST', token: session.token, body: { signature } });
-			if (res.ok) {
-				saveSession({ ...session, ranked: res.ranked });
-				return;
-			}
-			await new Promise((r) => setTimeout(r, BURN_POLL_MS));
-		}
-		throw new Error('burn_unconfirmed');
-	} catch (err) {
-		patch({ busy: null, error: err.code === 4001 ? 'declined' : err.message });
-	}
+	patch({ session: null, run: null });
 }
 
 // ---------- the live run ----------
@@ -280,7 +132,7 @@ async function startRun() {
 		live.timer = setInterval(flush, FLUSH_MS);
 		patch({ run: { id: runId, mode, status: 'running' } });
 	} catch (err) {
-		if (err.status === 401 || err.status === 403) signOut();
+		if (err.status === 401 || err.status === 403) patch({ session: null });
 		patch({ run: { status: 'rejected', reason: err.message } });
 	}
 }

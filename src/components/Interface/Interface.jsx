@@ -24,6 +24,7 @@ import './Interface.css';
 import { measurePerformance } from '../../hooks/usePerformance';
 import useTextureQueue from '../../hooks/useTextureQueue';
 import LoadingScreen from './Loading/LoadingScreen';
+import { canClockIn } from '../../services/accountService';
 import {
 	getKeyAudioPool,
 	areSoundsLoaded,
@@ -657,7 +658,7 @@ export default function Interface() {
 				if (gamepad && gamepad.connected) {
 					const aButtonPressed = gamepad.buttons[0]?.pressed;
 
-					if (loading && displayProgress === 100 && aButtonPressed) {
+					if (loading && displayProgress === 100 && aButtonPressed && canClockIn()) {
 						setIsGameplayActive(true);
 						setLoading(false);
 						setPlayIntro(true);

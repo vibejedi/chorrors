@@ -1,0 +1,146 @@
+.account-panel {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+	margin: 0.75rem 0;
+	width: min(24rem, calc(100vw - 2rem));
+	z-index: 2;
+	opacity: 0;
+	animation: loadingAppear 1s ease calc(var(--animation-delay) + 0.3s) forwards;
+	cursor: default;
+}
+
+.account-tabs {
+	display: flex;
+	width: 100%;
+	border-bottom: 1px solid rgba(245, 233, 224, 0.16);
+}
+
+.account-tabs button {
+	flex: 1;
+	font-family: inherit;
+	font-size: 1.1rem;
+	padding: 0.4rem 0.25rem;
+	color: #8e7a99;
+	background: none;
+	border: none;
+	border-bottom: 2px solid transparent;
+	cursor: pointer;
+}
+
+.account-tabs button.active {
+	color: #f5e9e0;
+	border-bottom-color: #e0283c;
+}
+
+.account-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 100%;
+}
+
+.account-form input {
+	font-family: inherit;
+	font-size: 1rem;
+	padding: 0.55rem 0.7rem;
+	color: #f5e9e0;
+	background: rgba(10, 5, 7, 0.85);
+	border: 1px solid rgba(245, 233, 224, 0.2);
+	outline: none;
+}
+
+.account-form input:focus {
+	border-color: #c4a8d4;
+}
+
+.account-button {
+	font-family: inherit;
+	font-size: 1.2rem;
+	letter-spacing: 0.04em;
+	color: #f5e9e0;
+	background: #e0283c;
+	border: 1px solid #e0283c;
+	padding: 0.5rem 1.1rem;
+	cursor: pointer;
+	transition: background 0.2s ease;
+}
+
+.account-button.small {
+	font-size: 1rem;
+	padding: 0.4rem 0.9rem;
+}
+
+.account-button:hover:not(:disabled) {
+	background: #ff3d52;
+}
+
+.account-button:disabled {
+	background: transparent;
+	border-color: rgba(245, 233, 224, 0.2);
+	color: #8e7a99;
+	cursor: default;
+}
+
+.account-button:focus-visible,
+.account-link:focus-visible,
+.account-tabs button:focus-visible {
+	outline: 2px solid #c4a8d4;
+	outline-offset: 3px;
+}
+
+.account-who {
+	font-size: 1.2rem;
+	color: #f5e9e0;
+	text-align: center;
+}
+
+.account-who strong {
+	color: #e0283c;
+	font-weight: 400;
+}
+
+.account-link {
+	font-family: inherit;
+	font-size: 1rem;
+	color: #8e7a99;
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.account-link:hover {
+	color: #c4a8d4;
+	text-decoration: underline;
+}
+
+.account-note {
+	font-size: 0.95rem;
+	color: #8e7a99;
+	text-align: center;
+	line-height: 1.35;
+}
+
+.account-error {
+	font-size: 0.95rem;
+	color: #ff4d5e;
+	text-align: center;
+}
+
+.run-result {
+	font-size: 1.25rem;
+	text-align: center;
+	color: #c4a8d4;
+	position: relative;
+	z-index: 2;
+	margin: 0.5rem 0 1rem;
+}
+
+.run-result.good {
+	color: #f5e9e0;
+}
+
+.run-result.bad {
+	color: #e0283c;
+}

@@ -9,7 +9,8 @@ import TrianglePattern from './TrianglePattern';
 import useInterface from '../../../hooks/useInterface';
 import useLocalization from '../../../hooks/useLocalization';
 import './LoadingScreen.css';
-import { RankedPanel } from '../Ranked/Ranked';
+import { AccountGate } from '../Account/Account';
+import useAccount, { canClockIn } from '../../../services/accountService';
 
 const LoadingScreen = ({ onStart }) => {
 	const { progress } = useProgress();
@@ -161,8 +162,10 @@ const LoadingScreen = ({ onStart }) => {
 		};
 	}, []);
 
+	const signedIn = useAccount((s) => !!s.session) || window.location.hash.includes('#debug');
+
 	const handleStartClick = (e) => {
-		if (displayProgress !== 100 || !animationsComplete) {
+		if (displayProgress !== 100 || !animationsComplete || !canClockIn()) {
 			e.stopPropagation();
 			return;
 		}
@@ -238,7 +241,9 @@ const LoadingScreen = ({ onStart }) => {
 					>
 						{displayProgress !== 100
 							? `${t('ui.loading.loading')}: ${displayProgress.toFixed(0)}%`
-							: t('ui.loading.clickToStart')}
+							: signedIn
+								? t('ui.loading.clickToStart')
+								: 'Sign in below to clock in'}
 					</div>
 					{displayProgress !== 100 && isStuck && (
 						<div
@@ -253,7 +258,7 @@ const LoadingScreen = ({ onStart }) => {
 							{t('ui.loading.clickToStart')}
 						</div>
 					)}
-					<RankedPanel />
+					<AccountGate />
 					<div
 						className="settings lincoln-regular"
 						onClick={handleSettingsClick}

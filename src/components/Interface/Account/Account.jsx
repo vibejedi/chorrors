@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import useAccount, { checkSession, shortWallet, signOut, SIGN_IN_URL } from '../../../services/accountService';
+import useAccount, { checkSession, DASHBOARD_URL, shortWallet, signOut, SIGN_IN_URL } from '../../../services/accountService';
 import './Account.css';
 
 const REASONS = {
@@ -61,10 +61,13 @@ export function AccountGate() {
 				{session.ranked ? 'Ranked' : 'Free play'} as <strong>{session.username}</strong> · {shortWallet(session.wallet)}
 			</div>
 			{session.walletVerified && !session.ranked && (
-				<a className="account-link" href={SIGN_IN_URL} target="_blank" rel="noopener">
-					Burn on horrors.fun to play ranked this week
+				<a className="account-link" href={DASHBOARD_URL} target="_blank" rel="noopener">
+					Buy Cleaning Horrors on horrors.fun to play ranked this week
 				</a>
 			)}
+			<a className="account-link" href={DASHBOARD_URL} target="_blank" rel="noopener">
+				Your dashboard and achievements
+			</a>
 			<button type="button" className="account-link" onClick={signOut}>
 				Sign out
 			</button>
@@ -96,5 +99,22 @@ export function RunResult() {
 		text = `${label} run not counted: ${REASONS[run.reason] || run.reason || 'it could not be verified'}`;
 		tone = 'bad';
 	}
-	return <div className={`run-result lincoln-regular ${tone}`}>{text}</div>;
+	const earned = run.achievements || [];
+	return (
+		<div className={`run-result lincoln-regular ${tone}`}>
+			{text}
+			{earned.length > 0 && (
+				<ul className="run-achievements">
+					{earned.map((a) => (
+						<li key={a.id}>
+							<img src={`https://horrors.fun/achievements/${a.id}.webp`} alt="" width={40} height={40} onError={(e) => (e.currentTarget.style.display = 'none')} />
+							<span>
+								{a.name} <em>+{a.points} pts</em>
+							</span>
+						</li>
+					))}
+				</ul>
+			)}
+		</div>
+	);
 }

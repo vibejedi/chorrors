@@ -12,6 +12,7 @@ import useInterface from '../hooks/useInterface';
 
 const API = import.meta.env.VITE_HORRORS_API || 'https://api.horrors.fun';
 export const SIGN_IN_URL = 'https://horrors.fun/#play';
+export const DASHBOARD_URL = 'https://horrors.fun/#dashboard';
 const LAST_NAME_KEY = 'skullhotel_last_player_name';
 const FLUSH_MS = 3000;
 
@@ -22,7 +23,7 @@ export const shortWallet = (w) => (w ? `${w.slice(0, 4)}…${w.slice(-4)}` : '')
 const useAccount = create((set) => ({
 	checked: false, // the first session check has finished
 	session: null, // { token, expiresAt, username, wallet, walletVerified, ranked }
-	run: null, // { id, mode, status: 'running' | 'rejected' | 'done', reason, verdict, durationMs }
+	run: null, // { id, mode, status: 'running' | 'rejected' | 'done', reason, verdict, durationMs, achievements }
 	set: (patch) => set(patch),
 }));
 
@@ -105,7 +106,7 @@ async function flush() {
 async function finish(run) {
 	try {
 		const res = await api(`/v1/cleaning/runs/${run.id}/finish`, { method: 'POST', token: run.token });
-		stopRun({ status: 'done', verdict: res.verdict, reason: res.reason, durationMs: res.durationMs });
+		stopRun({ status: 'done', verdict: res.verdict, reason: res.reason, durationMs: res.durationMs, achievements: res.achievements || [] });
 	} catch (err) {
 		stopRun({ status: 'rejected', reason: err.data?.reason || err.message });
 	}

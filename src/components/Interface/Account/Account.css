@@ -149,3 +149,29 @@
 	text-align: center;
 	text-decoration: none;
 }
+
+.run-achievements {
+	list-style: none;
+	margin: 10px 0 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	align-items: center;
+}
+
+.run-achievements li {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.run-achievements img {
+	border-radius: 50%;
+	box-shadow: 0 0 12px rgba(208, 26, 79, 0.5);
+}
+
+.run-achievements em {
+	font-style: normal;
+	opacity: 0.7;
+}

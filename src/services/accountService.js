@@ -53,6 +53,8 @@ export const canClockIn = () => isDebug() || !!useAccount.getState().session;
 async function api(path, { method = 'GET', body, token } = {}) {
 	const res = await fetch(API + path, {
 		method,
+		// Lets the API set its horrors.fun-wide sign-in cookie, so horrors.fun knows who you are too.
+		credentials: 'include',
 		headers: { 'content-type': 'application/json', ...(token ? { authorization: `Bearer ${token}` } : {}) },
 		body: body ? JSON.stringify(body) : undefined,
 	});
@@ -69,6 +71,7 @@ function saveSession(session) {
 }
 
 export function signOut() {
+	api('/v1/auth/logout', { method: 'POST' }).catch(() => {});
 	localStorage.removeItem(STORAGE_KEY);
 	patch({ session: null, run: null, claim: null, error: null });
 }

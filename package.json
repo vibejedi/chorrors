@@ -25,7 +25,6 @@
 		"@react-three/fiber": "^8.18.0",
 		"@react-three/postprocessing": "^2.16.7",
 		"@types/three": "^0.180.0",
-		"firebase": "^12.4.0",
 		"leva": "^0.9.35",
 		"postprocessing": "^6.37.8",
 		"react": "^18.3.1",

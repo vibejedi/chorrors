@@ -17,7 +17,7 @@ import useMonster from './hooks/useMonster';
 import useGridStore from './hooks/useGrid';
 import useLight from './hooks/useLight';
 import PostProcessing from './components/PostProcessing';
-import { probeFirestoreReachability } from './firebase/healthCheck';
+import { probeGuestBookReachability } from './services/healthCheck';
 
 import { Leva, useControls, button } from 'leva';
 
@@ -140,7 +140,7 @@ function App() {
 
 	useEffect(() => {
 		let cancelled = false;
-		probeFirestoreReachability().then((ok) => {
+		probeGuestBookReachability().then((ok) => {
 			if (!cancelled) setFirestoreReachable(ok);
 		});
 		return () => {
